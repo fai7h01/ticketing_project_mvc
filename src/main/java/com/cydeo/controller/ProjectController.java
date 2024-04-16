@@ -1,7 +1,6 @@
 package com.cydeo.controller;
 
 import com.cydeo.dto.ProjectDTO;
-import com.cydeo.enums.Status;
 import com.cydeo.service.ProjectService;
 import com.cydeo.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -38,8 +37,8 @@ public class ProjectController {
         return "redirect:/project/create";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteProject(@PathVariable("id") String id){
+    @GetMapping("/delete/{projectCode}")
+    public String deleteProject(@PathVariable("projectCode") String id){
 
         projectService.deleteById(id);
 
