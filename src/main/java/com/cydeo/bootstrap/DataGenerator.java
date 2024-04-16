@@ -27,7 +27,7 @@ public class DataGenerator implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception { // This run method will execute FIRST BEFORE ANYTHING when you start application
+    public void run(String... args) throws Exception {
 
         RoleDTO adminRole = new RoleDTO(1L,"Admin");
         RoleDTO managerRole = new RoleDTO(2L,"Manager");

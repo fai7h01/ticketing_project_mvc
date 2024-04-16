@@ -12,7 +12,8 @@ public class ProjectServiceImpl extends AbstractMapService<ProjectDTO,String> im
 
     @Override
     public ProjectDTO save(ProjectDTO project) {
-        project.setProjectStatus(Status.OPEN);
+        if (project.getProjectStatus() == null)
+            project.setProjectStatus(Status.OPEN);
         return super.save(project.getProjectCode(),project);
     }
 
