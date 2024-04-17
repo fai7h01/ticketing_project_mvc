@@ -1,6 +1,7 @@
 package com.cydeo.controller;
 
 import com.cydeo.dto.ProjectDTO;
+import com.cydeo.enums.Status;
 import com.cydeo.service.ProjectService;
 import com.cydeo.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -45,5 +46,12 @@ public class ProjectController {
         return "redirect:/project/create";
     }
 
+    @GetMapping("/complete/{projectCode}")
+    public String completeProject(@PathVariable("projectCode") String id){
+
+        projectService.complete(projectService.findById(id));
+
+        return "redirect:/project/create";
+    }
 
 }
