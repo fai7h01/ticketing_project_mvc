@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class TaskServiceImpl extends AbstractMapService<TaskDTO,Long> implements TaskService {
@@ -47,5 +48,12 @@ public class TaskServiceImpl extends AbstractMapService<TaskDTO,Long> implements
         if (task.getAssignedDate() == null)
             task.setAssignedDate(findById(task.getId()).getAssignedDate());
         super.update(task.getId(), task);
+    }
+
+    @Override
+    public List<TaskDTO> findTaskByManager(UserDTO manager) {
+        return findAll().stream()
+                .filter(task -> task.getProject().getAssignedManager().equals(manager))
+                .collect(Collectors.toList());
     }
 }
